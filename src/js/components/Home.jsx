@@ -1,28 +1,35 @@
 import React from "react";
+import Digits from "./Digits";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
-const Home = () => {
+
+function Home (props) {
+	let time = props.time
+	let numberArray =  time.toString().split('').map(Number)
+	 if (numberArray.length < 6 )
+		for(let i = numberArray.length ; i < 6 ; i++ )
+	     numberArray.unshift(0)
+	
+	console.log(numberArray)
 	return (
-		<div className="text-center">
-            
+		<div className="container mt-5">
+          <div class="row">
+		   <Digits number = {<i className="fa-solid fa-clock"></i>}/>
+           <Digits number = {numberArray[0]}/>
+		   <Digits number = {numberArray[1]}/>
+		   <Digits number = {numberArray[2]}/>
+		   <Digits number = {numberArray[3]}/>
+		   <Digits number = {numberArray[4]}/>
+		   <Digits number = {numberArray[5]}/>
+		  </div>
+		  
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+		  </div>
+		  
+			
+    
+		
+	)
+}
 
 export default Home;
